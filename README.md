@@ -4,6 +4,8 @@ Este projeto é um blog pessoal e técnico desenvolvido com o ecossistema Python
 
 Inicialmente construído como um projeto prático do curso _Python do Básico ao Avançado_ (do professor Otávio Miranda), a aplicação evoluiu para se tornar o meu espaço oficial na web. O objetivo do GlobLeus é documentar estudos, compartilhar soluções de engenharia de software e difundir boas práticas de programação.
 
+![alt text](captura.png)
+
 ## ✨ Funcionalidades Principais
 
 - **Class-Based Views (CBVs):** Utilização intensiva de views baseadas em classes no Django para manter o código limpo, modular e reutilizável.
