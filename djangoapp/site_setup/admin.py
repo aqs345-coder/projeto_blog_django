@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django_summernote.admin import SummernoteModelAdmin
 from site_setup.models import MenuLink, SiteSetup
 
 # @admin.register(MenuLink)
@@ -14,7 +15,8 @@ class MenuLinkInline(admin.TabularInline):
 
 
 @admin.register(SiteSetup)
-class SiteSetupAdmin(admin.ModelAdmin):
+class SiteSetupAdmin(SummernoteModelAdmin):
+    summernote_fields = ('description',)
     list_display = 'title', 'description',
     inlines = MenuLinkInline,
 

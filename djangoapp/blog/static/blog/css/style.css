@@ -1,6 +1,6 @@
 :root {
   /* Colors */
-  --_clr-base-hue: 22;
+  --_clr-base-hue: 263;
   --_clr-primary: var(--_clr-base-hue) 100%;
   --_clr-gray: var(--_clr-base-hue) 10%;
 
@@ -27,7 +27,7 @@
   /* Font-family */
   --ff-regular: Georgia, "Times New Roman", Times, serif;
   --ff-headings: Georgia, "Times New Roman", Times, serif;
-  --ff-mono: "Courier New", Courier, monospace;
+  --ff-mono: monospace;
 
   /* Font-Sizes */
   /* https://royalfig.github.io/fluid-typography-calculator/ */
@@ -66,10 +66,14 @@
   --mw-post: 90rem;
 
   /* Border Radius */
-  --br-base: 0.4rem;
+  --br-base: 0.6rem;
 }
 
 /* Base */
+img {
+  margin: 0 auto;
+}
+
 html {
   font-size: 62.5%;
 }
@@ -93,6 +97,7 @@ a {
 
 a:hover {
   color: hsl(var(--clr-primary-dk));
+  text-decoration: none;
 }
 
 h1,
@@ -140,7 +145,7 @@ pre {
   max-width: 100%;
   overflow-x: auto;
   line-height: var(--lh-mono);
-  font-size: var(--fs-sm);
+  font-size: var(--fs-smlr);
 }
 
 pre,
@@ -153,6 +158,16 @@ input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
   -webkit-appearance: none;
+}
+
+img {
+  margin: 0 auto;
+}
+
+/* CodeMirror */
+.CodeMirror {
+  height: auto !important;
+  font-size: var(--fs-smlr) !important;
 }
 
 /* Blog */
@@ -192,6 +207,10 @@ html,
 /* Utilities */
 .pb-base {
   padding-bottom: var(--spacing-base);
+}
+
+.mt-base {
+  margin-top: var(--spacing-base);
 }
 
 .center {
@@ -294,7 +313,7 @@ html,
 
 /* Footer */
 .footer {
-  background: hsl(var(--clr-gray-dkr));
+  background: hsl(var(--clr-gray-dk));
   color: hsl(var(--clr-white));
 }
 
@@ -421,18 +440,25 @@ html,
 
 .card-cover-wrapper {
   aspect-ratio: 16 / 9;
+  width: 100%;
+  background-color: #f4f4f4; /* Um cinza bem suave. Você pode testar #eaeaea ou rgba(0,0,0,0.05) */
+  border-radius: var(--br-base) var(--br-base) 0 0; /* Movemos o arredondamento para cá */
+  overflow: hidden; /* Corta qualquer coisa que vazar do arredondamento */
+  display: flex; /* Centraliza a imagem perfeitamente caso ela seja menor */
+  align-items: center;
+  justify-content: center;
 }
 
 .card-cover {
   border-radius: var(--br-base) var(--br-base) 0 0;
   aspect-ratio: 16 / 9;
   object-position: center;
-  object-fit: cover;
+  object-fit: contain;
   transition: opacity 300ms ease-in-out;
 }
 
 .card-cover:hover {
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 .card-title-link {

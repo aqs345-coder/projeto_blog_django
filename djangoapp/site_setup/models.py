@@ -13,7 +13,7 @@ class MenuLink(models.Model):
     new_tab = models.BooleanField(default=False)
     site_setup = models.ForeignKey(
         'SiteSetup', on_delete=models.CASCADE, blank=True, null=True,
-        default=None
+        default=None, related_name='menu'
     )
 
     def __str__(self):
@@ -26,7 +26,7 @@ class SiteSetup(models.Model):
         verbose_name_plural = 'Setup'
 
     title = models.CharField(max_length=65)
-    description = models.CharField(max_length=255)
+    description = models.CharField(max_length=1500)
 
     show_header = models.BooleanField(default=True)
     show_search = models.BooleanField(default=True)
@@ -52,5 +52,4 @@ class SiteSetup(models.Model):
             resize_image(self.favicon, 32)
 
     def __str__(self):
-        return self.title
         return self.title

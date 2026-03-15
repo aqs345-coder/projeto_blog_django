@@ -3,16 +3,16 @@
         <div class="section-gap">
 
             <h1 class="blog-title center pb-base">
-                <a class="blog-link" href={% url "index" %}>{{ site_setup.title }}</a>
+                <a class="blog-link" href={% url "blog:index" %}>{{ site_setup.title }}</a>
             </h1>
 
             {% if site_setup.show_description %}
-                <p class="blog-description pb-base center">{{ site_setup.description }}</p>
+                <p class="blog-description pb-base center">{{ site_setup.description | safe }}</p>
             {% endif %}
 
             {% if site_setup.show_search %}
                 <div class="search pb-base center">
-                    <form class="search-form" action="#" method="get">
+                    <form class="search-form" action="{% url 'blog:search' %}" method="get">
                         <div class="search-content">
                             <label class="sr-only" id="search-label" for="search-input">Search</label>
                             <input class="search-input"
@@ -20,7 +20,8 @@
                                    name="search"
                                    id="search-input"
                                    placeholder="Search"
-                                   value="Non risu potius quam oratione eiciendum? Quo pleb ">
+                                   value="{{ search_value }}"
+                                   required>
                             <button class="search-btn" type="submit" aria-labelledby="search-label">
                                 <i class="fa fa-search"></i>
                             </button>
@@ -32,10 +33,10 @@
             {% if site_setup.show_menu %}
                 <nav class="menu">
                     <ul class="menu-items">
-                        {% for link in site_setup.menulink_set.all %}
+                        {% for link in site_setup.menu.all %}
                             <li class="menu-item">
                                 {% if link.new_tab %}
-                                    <a target="_blank" class="menu-link" href="{{ link.url_or_path }}">{{ link.text }}</a>
+                                    <a target="" class="menu-link" href="{{ link.url_or_path }}">{{ link.text }}</a>
                                 {% else %}
                                     <a class="menu-link" href="{{ link.url_or_path }}">{{ link.text }}</a>
                                 {% endif %}
